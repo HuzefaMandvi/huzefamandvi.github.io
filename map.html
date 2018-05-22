@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Map</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_X1mcJBpMorGLEg0P0lgVtSFOzWHS2k&callback=initMap" 
+			type="text/javascript"></script>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="reveal">
+				<a href="index.html"> 35mm Merlion </a>
+				<a href="#menu"></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="map.html">Map</a></li>
+				</ul>
+			</nav>
+
+
+			<div id="map" class="map fullmap"></div>
+			
+			<script type="text/javascript">
+			    var locations = [
+			      ['Singapore', 1.305266, 103.773862],
+			      ['Bintan', 1.153385, 104.577470],
+			      ['Kuching', 1.556678, 110.350945],
+			      ['Bangkok', 13.762793, 100.501575],
+			      ['Ho Chi Minh', 10.768611, 106.697070],
+			      ['Ha Noi', 21.034049, 105.853929],
+			      ['Kuala Lumpur', 3.146506, 101.701203],
+			      ['Siem Reap', 13.353723, 103.853749],
+			      ['Samosir Island', 2.557333, 98.913194],
+			      ['Ao Nang', 8.035751, 98.832957],
+			      ['Melaka', 2.182217, 102.262731]
+			    ];
+
+			    var map = new google.maps.Map(document.getElementById('map'), {
+			      zoom: 5,
+			      center: new google.maps.LatLng(10.138444, 104.330841),
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    });
+
+			    var infowindow = new google.maps.InfoWindow();
+			    var marker, i;
+
+			    for (i = 0; i < locations.length; i++) {  
+			    	marker = new google.maps.Marker({
+			        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			        map: map
+			      	});
+
+			     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				        return function() {
+				          infowindow.setContent(locations[i][0]);
+				          infowindow.open(map, marker);
+				        }
+	      			})(marker, i));
+			    }
+			</script>
+    		
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/huzefa.mandviwala" class="icon fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/huzefamandvi/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+						<li><a href="https://github.com/HuzefaMandvi" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/header.js"></script>
+			<script src="assets/js/scrolldown.js"></script>
+
+	</body>
+</html>
